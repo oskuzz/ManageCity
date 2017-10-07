@@ -46,6 +46,7 @@ public class Main extends Canvas implements Runnable {
         upgrade = new Upgrade(this);
 
         this.addMouseListener(mainmenu);
+        this.addMouseListener(upgrade);
 
         new Window(WIDTH, HEIGHT, "Game", this);
     }
@@ -73,7 +74,7 @@ public class Main extends Canvas implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                //System.out.println("FPS: " + frames);
+                System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
@@ -96,7 +97,9 @@ public class Main extends Canvas implements Runnable {
     }
 
     public void tick() {
-
+    	if (screen == SCREEN.Upgrade) {
+            upgrade.tick();
+        }
     }
 
     public void render() {
@@ -121,7 +124,17 @@ public class Main extends Canvas implements Runnable {
         g.dispose();
         bs.show();
     }
-
+    
+    public static float clamp(float var, float min, float max) {
+        if (var >= max) {
+            return var = max;
+        } else if (var <= min) {
+            return var = min;
+        } else {
+            return var;
+        }
+    }
+    
     public static void main(String[] args) {
         new Main();
     }
