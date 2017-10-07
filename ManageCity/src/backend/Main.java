@@ -10,8 +10,6 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -25,6 +23,7 @@ public class Main extends Canvas implements Runnable {
 
     private MainMenu mainmenu;
     private NewGame newGame;
+    private Upgrade upgrade;
 
     public enum SCREEN {
         MainMenu,
@@ -35,17 +34,16 @@ public class Main extends Canvas implements Runnable {
         Options,
         Menu,
         Bank,
-        NewGame,
-        Continue
+        NewGame
     };
 
-    public static SCREEN screen = SCREEN.MainMenu;
+    public static SCREEN screen = SCREEN.Upgrade;
 
     public Main() {
 
         mainmenu = new MainMenu(this);
-
         newGame = new NewGame(this);
+        upgrade = new Upgrade(this);
 
         this.addMouseListener(mainmenu);
 
@@ -116,6 +114,8 @@ public class Main extends Canvas implements Runnable {
             mainmenu.render(g);
         } else if (screen == SCREEN.NewGame) {
             newGame.render(g);
+        } else if (screen == SCREEN.Upgrade) {
+            upgrade.render(g);
         }
 
         g.dispose();
