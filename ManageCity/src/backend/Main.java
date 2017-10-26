@@ -37,7 +37,8 @@ public class Main extends Canvas implements Runnable {
         Options,
         Menu,
         Bank,
-        NewGame
+        NewGame,
+        Continue
     };
 
     public static SCREEN screen = SCREEN.MainMenu;
@@ -50,6 +51,7 @@ public class Main extends Canvas implements Runnable {
 
         this.addMouseListener(mainmenu);
         this.addMouseListener(upgrade);
+        this.addKeyListener(new KeyInput());
 
         new Window(WIDTH, HEIGHT, "Game", this);
 
@@ -115,7 +117,6 @@ public class Main extends Canvas implements Runnable {
         }
 
         Graphics g = bs.getDrawGraphics();
-        
 
         g.setColor(Color.white);
         g.fillRect(0, 0, WIDTH, HEIGHT);

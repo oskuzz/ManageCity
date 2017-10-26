@@ -20,11 +20,13 @@ import java.awt.image.BufferedImage;
 public class MainMenu extends MouseAdapter {
 
     private Main main;
-    private static final BufferedImage IMAGE = Images.getMainMenu();;
+    private static final BufferedImage IMAGE = Images.getMainMenu();
+
+    ;
 
     public MainMenu(Main main) {
         this.main = main;
-        
+
     }
 
     public void mousePressed(MouseEvent e) {
@@ -37,11 +39,11 @@ public class MainMenu extends MouseAdapter {
             }
 
             if (mouseOver(mx, my, 380, 260, 200, 60)) {
-                System.out.println("Continue");
+                main.screen = SCREEN.Continue;
             }
 
             if (mouseOver(mx, my, 380, 360, 200, 60)) {
-                System.out.println("Options");
+                main.screen = SCREEN.Options;
             }
 
             if (mouseOver(mx, my, 380, 460, 200, 60)) {
