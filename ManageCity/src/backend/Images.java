@@ -21,9 +21,9 @@ public class Images {
 
     private static BufferedImage mainmenu;
 
-    public BufferedImage loadImage() {
+    public static BufferedImage loadImage() {
         try {
-            mainmenu = ImageIO.read(getClass().getResource(IMAGEDIR + MAINMENU));
+            mainmenu = ImageIO.read(Images.class.getResource(IMAGEDIR + MAINMENU));
         } catch (IOException ex) {
         }
         return image;

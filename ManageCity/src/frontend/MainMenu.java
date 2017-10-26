@@ -20,11 +20,11 @@ import java.awt.image.BufferedImage;
 public class MainMenu extends MouseAdapter {
 
     private Main main;
-    private final BufferedImage image;
+    private static final BufferedImage IMAGE = Images.getMainMenu();;
 
     public MainMenu(Main main) {
         this.main = main;
-        image = Images.getMainMenu();
+        
     }
 
     public void mousePressed(MouseEvent e) {
@@ -71,6 +71,6 @@ public class MainMenu extends MouseAdapter {
     }
 
     public void render(Graphics g) {
-        g.drawImage(image, 0, 0, null);
+        g.drawImage(IMAGE, 0, 0, null);
     }
 }
