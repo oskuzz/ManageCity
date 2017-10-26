@@ -9,8 +9,10 @@ import frontend.*;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.Vector;
 
 /**
  *
@@ -25,8 +27,6 @@ public class Main extends Canvas implements Runnable {
     private MainMenu mainmenu;
     private NewGame newGame;
     private Upgrade upgrade;
-    
-    private final BufferedImage mainMenu;
 
     public enum SCREEN {
         MainMenu,
@@ -50,12 +50,9 @@ public class Main extends Canvas implements Runnable {
 
         this.addMouseListener(mainmenu);
         this.addMouseListener(upgrade);
-        
+
         new Window(WIDTH, HEIGHT, "Game", this);
-        
-        Images loader = new Images();
-        
-        mainMenu = loader.loadImage("pictures/MainMenu.png");
+
     }
 
     public void run() {
@@ -104,13 +101,13 @@ public class Main extends Canvas implements Runnable {
     }
 
     public void tick() {
-    	if (screen == SCREEN.Upgrade) {
+        if (screen == SCREEN.Upgrade) {
             upgrade.tick();
         }
     }
 
     public void render() {
-        
+
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
             this.createBufferStrategy(3);
@@ -133,7 +130,7 @@ public class Main extends Canvas implements Runnable {
         g.dispose();
         bs.show();
     }
-    
+
     public static float clamp(float var, float min, float max) {
         if (var >= max) {
             return var = max;
@@ -143,7 +140,7 @@ public class Main extends Canvas implements Runnable {
             return var;
         }
     }
-    
+
     public static void main(String[] args) {
         new Main();
     }

@@ -5,12 +5,10 @@
  */
 package frontend;
 
+import backend.Images;
 import backend.Main;
 import backend.Main.SCREEN;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -22,9 +20,11 @@ import java.awt.image.BufferedImage;
 public class MainMenu extends MouseAdapter {
 
     private Main main;
+    private final BufferedImage image;
 
     public MainMenu(Main main) {
         this.main = main;
+        image = Images.getMainMenu();
     }
 
     public void mousePressed(MouseEvent e) {
@@ -71,17 +71,6 @@ public class MainMenu extends MouseAdapter {
     }
 
     public void render(Graphics g) {
-        Font fnt = new Font("arial", 1, 30);
-
-        g.setColor(Color.black);
-        g.setFont(fnt);
-        g.drawString("Play", 450, 200);
-        g.drawRect(380, 160, 200, 60);
-        g.drawString("Continue", 420, 300);
-        g.drawRect(380, 260, 200, 60);
-        g.drawString("Options", 430, 400);
-        g.drawRect(380, 360, 200, 60);
-        g.drawString("Exit", 450, 500);
-        g.drawRect(380, 460, 200, 60);
+        g.drawImage(image, 0, 0, null);
     }
 }

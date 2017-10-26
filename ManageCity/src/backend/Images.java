@@ -15,14 +15,21 @@ import javax.imageio.ImageIO;
  */
 public class Images {
 
-    private BufferedImage image;
-    
-    public BufferedImage loadImage(String path){
+    private static BufferedImage image;
+    private static final String IMAGEDIR = "images/";
+    private static final String MAINMENU = "MainMenu.png";
+
+    private static BufferedImage mainmenu;
+
+    public BufferedImage loadImage() {
         try {
-            image = ImageIO.read(getClass().getResource(path));
+            mainmenu = ImageIO.read(getClass().getResource(IMAGEDIR + MAINMENU));
         } catch (IOException ex) {
-            ex.printStackTrace();
         }
         return image;
+    }
+
+    public static BufferedImage getMainMenu() {
+        return mainmenu;
     }
 }
