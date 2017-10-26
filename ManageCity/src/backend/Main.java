@@ -10,6 +10,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -24,6 +25,8 @@ public class Main extends Canvas implements Runnable {
     private MainMenu mainmenu;
     private NewGame newGame;
     private Upgrade upgrade;
+    
+    private final BufferedImage mainMenu;
 
     public enum SCREEN {
         MainMenu,
@@ -37,7 +40,7 @@ public class Main extends Canvas implements Runnable {
         NewGame
     };
 
-    public static SCREEN screen = SCREEN.Upgrade;
+    public static SCREEN screen = SCREEN.MainMenu;
 
     public Main() {
 
@@ -47,8 +50,12 @@ public class Main extends Canvas implements Runnable {
 
         this.addMouseListener(mainmenu);
         this.addMouseListener(upgrade);
-
+        
         new Window(WIDTH, HEIGHT, "Game", this);
+        
+        Images loader = new Images();
+        
+        mainMenu = loader.loadImage("pictures/MainMenu.png");
     }
 
     public void run() {
@@ -103,6 +110,7 @@ public class Main extends Canvas implements Runnable {
     }
 
     public void render() {
+        
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
             this.createBufferStrategy(3);
@@ -110,6 +118,7 @@ public class Main extends Canvas implements Runnable {
         }
 
         Graphics g = bs.getDrawGraphics();
+        
 
         g.setColor(Color.white);
         g.fillRect(0, 0, WIDTH, HEIGHT);
