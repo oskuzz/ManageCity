@@ -5,6 +5,7 @@
  */
 package backend;
 
+import pictures.Images;
 import frontend.*;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -39,11 +40,15 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.Bank;
+    public static SCREEN screen = SCREEN.MainMenu;
 
     public Main() {
-
-        mainmenu = new MainMenu(this);
+        
+        Images images = new Images();
+        
+        images.loadImage();
+        
+        mainmenu = new MainMenu(this, Images.getMainMenu(), Images.getMainMenuBackGround());
         newGame = new NewGame(this);
         upgrade = new Upgrade(this);
         bank = new Bank(100, this);
@@ -117,7 +122,6 @@ public class Main extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
 
-        g.setColor(Color.white);
         g.fillRect(0, 0, WIDTH, HEIGHT);
         if (screen == SCREEN.MainMenu) {
             mainmenu.render(g);

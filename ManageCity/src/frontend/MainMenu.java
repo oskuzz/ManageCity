@@ -5,7 +5,6 @@
  */
 package frontend;
 
-import backend.Images;
 import backend.Main;
 import backend.Main.SCREEN;
 import java.awt.Graphics;
@@ -20,13 +19,15 @@ import java.awt.image.BufferedImage;
 public class MainMenu extends MouseAdapter {
 
     private Main main;
-    private static final BufferedImage IMAGE = Images.getMainMenu();
+    private static BufferedImage MAINMENUIMAGE;
+    private static BufferedImage MAINMENUBACKGROUND;
 
     ;
 
-    public MainMenu(Main main) {
+    public MainMenu(Main main, BufferedImage MAINMENUIMAGE, BufferedImage MAINMENUBACKGROUND) {
         this.main = main;
-
+        this.MAINMENUIMAGE = MAINMENUIMAGE;
+        this.MAINMENUBACKGROUND = MAINMENUBACKGROUND;
     }
 
     public void mousePressed(MouseEvent e) {
@@ -73,6 +74,8 @@ public class MainMenu extends MouseAdapter {
     }
 
     public void render(Graphics g) {
-        g.drawImage(IMAGE, 0, 0, null);
+        g.drawImage(MAINMENUBACKGROUND, 0, 0, null);
+        g.drawImage(MAINMENUIMAGE, 0, -29, null);
+        g.drawRect(0, 0, 0, 0);
     }
 }

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package backend;
+package pictures;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -18,20 +19,25 @@ public class Images {
     private static BufferedImage image;
     private static final String IMAGEDIR = "images/";
     private static final String MAINMENU = "MainMenu.png";
+    private static final String MAINMENUBACKGROUND = "MainMenuBackGround.png";
 
     private static BufferedImage mainmenu;
+    private static BufferedImage mainmenubackground;
 
-    public BufferedImage loadImage() {
+    public void loadImage() {
         try {
-
-            mainmenu = ImageIO.read(Images.class.getResource(MAINMENU));
-
+            mainmenu = ImageIO.read(getClass().getResource(MAINMENU));
+            mainmenubackground = ImageIO.read(getClass().getResource(MAINMENUBACKGROUND));
         } catch (IOException ex) {
+            System.out.println("FAIL");
         }
-        return image;
     }
 
     public static BufferedImage getMainMenu() {
         return mainmenu;
+    }
+
+    public static BufferedImage getMainMenuBackGround() {
+        return mainmenubackground;
     }
 }
