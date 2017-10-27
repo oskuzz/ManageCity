@@ -9,10 +9,7 @@ import frontend.*;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.util.Vector;
 
 /**
  *
@@ -27,6 +24,7 @@ public class Main extends Canvas implements Runnable {
     private MainMenu mainmenu;
     private NewGame newGame;
     private Upgrade upgrade;
+    private Bank bank;
 
     public enum SCREEN {
         MainMenu,
@@ -41,13 +39,14 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.MainMenu;
+    public static SCREEN screen = SCREEN.Bank;
 
     public Main() {
 
         mainmenu = new MainMenu(this);
         newGame = new NewGame(this);
         upgrade = new Upgrade(this);
+        bank = new Bank(100, this);
 
         this.addMouseListener(mainmenu);
         this.addMouseListener(upgrade);
@@ -126,6 +125,8 @@ public class Main extends Canvas implements Runnable {
             newGame.render(g);
         } else if (screen == SCREEN.Upgrade) {
             upgrade.render(g);
+        } else if (screen == SCREEN.Bank) {
+            bank.render(g);
         }
 
         g.dispose();
