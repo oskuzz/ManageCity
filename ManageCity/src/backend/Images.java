@@ -23,7 +23,7 @@ public class Images {
 
     public static BufferedImage loadImage() {
         try {
-            mainmenu = ImageIO.read(Images.class.getResource(IMAGEDIR + MAINMENU));
+            mainmenu = ImageIO.read(Images.class.getResource(MAINMENU));
         } catch (IOException ex) {
         }
         return image;
