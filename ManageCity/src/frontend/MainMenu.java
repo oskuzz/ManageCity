@@ -7,6 +7,8 @@ package frontend;
 
 import backend.Main;
 import backend.Main.SCREEN;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -35,19 +37,19 @@ public class MainMenu extends MouseAdapter {
         int my = e.getY();
 
         if (main.screen == SCREEN.MainMenu) {
-            if (mouseOver(mx, my, 380, 160, 200, 60)) {
+            if (mouseOver(mx, my, 380, 230, 200, 60)) {
                 main.screen = SCREEN.NewGame;
             }
 
-            if (mouseOver(mx, my, 380, 260, 200, 60)) {
+            if (mouseOver(mx, my, 380, 330, 200, 60)) {
                 main.screen = SCREEN.Continue;
             }
 
-            if (mouseOver(mx, my, 380, 360, 200, 60)) {
+            if (mouseOver(mx, my, 380, 430, 200, 60)) {
                 main.screen = SCREEN.Options;
             }
 
-            if (mouseOver(mx, my, 380, 460, 200, 60)) {
+            if (mouseOver(mx, my, 380, 530, 200, 60)) {
                 System.exit(0);
             }
         }
@@ -76,6 +78,15 @@ public class MainMenu extends MouseAdapter {
     public void render(Graphics g) {
         g.drawImage(MAINMENUBACKGROUND, 0, 0, null);
         g.drawImage(MAINMENUIMAGE, 0, -29, null);
-        g.drawRect(0, 0, 0, 0);
+        g.setColor(Color.red);
+
+        Font fnt = new Font("Arial", 1, 35);
+        g.setFont(fnt);
+        g.setColor(Color.black);
+        g.drawString("New Game", 390, 273);
+        g.drawString("Continue", 408, 373);
+        g.drawString("Options", 420, 473);
+        g.drawString("Exit", 450, 573);
+
     }
 }

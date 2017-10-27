@@ -7,6 +7,7 @@ package frontend;
 
 import backend.Main;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 /**
@@ -14,9 +15,9 @@ import java.awt.Graphics;
  * @author s1601396
  */
 public class NewGame {
-    
+
     private Main main;
-    
+
     public NewGame(Main main) {
         this.main = main;
     }
@@ -26,7 +27,13 @@ public class NewGame {
     }
 
     public void render(Graphics g) {
+        g.setColor(Color.white);
+        g.drawRect(380, 430, 200, 60);
+
+        Font fnt = new Font("Arial", 1, 35);
+        g.setFont(fnt);
         g.setColor(Color.black);
-        g.fillRect(100, 100, 100, 100);
+
+        g.drawString("Play", 420, 473);
     }
 }

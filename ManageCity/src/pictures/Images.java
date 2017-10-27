@@ -16,8 +16,6 @@ import javax.imageio.ImageIO;
  */
 public class Images {
 
-    private static BufferedImage image;
-    private static final String IMAGEDIR = "images/";
     private static final String MAINMENU = "MainMenu.png";
     private static final String MAINMENUBACKGROUND = "MainMenuBackGround.png";
 
