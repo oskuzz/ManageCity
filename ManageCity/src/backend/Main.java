@@ -56,9 +56,10 @@ public class Main extends Canvas implements Runnable {
         bank = new Bank(100, this);
         marketing = new Marketing();
         shop = new Shop();
-        game = new Game(this, upgrade, bank, shop, marketing);
+        game = new Game(this, upgrade, bank, shop, marketing, Images.getGameOverFlow());
 
         this.addMouseListener(mainmenu);
+        this.addMouseListener(game);
         this.addMouseListener(upgrade);
         this.addKeyListener(new KeyInput());
 
@@ -136,6 +137,8 @@ public class Main extends Canvas implements Runnable {
             upgrade.render(g);
         } else if (screen == SCREEN.Bank) {
             bank.render(g);
+        } else if(screen == SCREEN.Game){
+            game.render(g);
         }
 
         g.dispose();

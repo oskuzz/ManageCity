@@ -18,14 +18,18 @@ public class Images {
 
     private static final String MAINMENU = "MainMenu.png";
     private static final String MAINMENUBACKGROUND = "MainMenuBackGround.png";
+    private static final String GAMEOVERFLOW = "GameOverFlow.png";
 
     private static BufferedImage mainmenu;
     private static BufferedImage mainmenubackground;
+    private static BufferedImage gameoverflow;
 
     public void loadImage() {
         try {
             mainmenu = ImageIO.read(getClass().getResource(MAINMENU));
             mainmenubackground = ImageIO.read(getClass().getResource(MAINMENUBACKGROUND));
+            gameoverflow = ImageIO.read(getClass().getResource(GAMEOVERFLOW));
+            
         } catch (IOException ex) {
             System.out.println("FAIL");
         }
@@ -37,5 +41,8 @@ public class Images {
 
     public static BufferedImage getMainMenuBackGround() {
         return mainmenubackground;
+    }
+    public static BufferedImage getGameOverFlow() {
+        return gameoverflow;
     }
 }

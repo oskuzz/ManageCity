@@ -27,6 +27,14 @@ public class Bank {
         
     }
     
+    public void toBank(int maara){
+        kassa += maara;
+    }
+    
+    public int getBank(){
+        return kassa;
+    }
+    
     public void render(Graphics g){
         g.setColor(Color.yellow);
         g.drawRect(40, 40, 40, 40);

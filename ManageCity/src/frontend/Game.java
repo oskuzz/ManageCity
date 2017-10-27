@@ -6,35 +6,79 @@
 package frontend;
 
 import backend.Main;
+import backend.Main.SCREEN;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 /**
  *
  * @author s1601396
  */
-public class Game{
-    
+public class Game extends MouseAdapter {
+
     private Main main;
     private Upgrade upgrade;
     private Bank bank;
     private Shop shop;
     private Marketing marketing;
-    
-    public Game(Main main, Upgrade upgrade, Bank bank, Shop shop, Marketing marketing){
+    private BufferedImage overflow;
+
+    public Game(Main main, Upgrade upgrade, Bank bank, Shop shop, Marketing marketing, BufferedImage overflow) {
         this.main = main;
         this.upgrade = upgrade;
         this.bank = bank;
         this.shop = shop;
         this.marketing = marketing;
-        
+        this.overflow = overflow;
     }
-    
-    public void tick(){
-        
+
+    public void mousePressed(MouseEvent e) {
+        int mx = e.getX();
+        int my = e.getY();
+
+        if (mouseOver(mx, my, 830, 548, 100, 50)) {
+            main.screen = SCREEN.Shop;
+        }
     }
-    
-    public void render(Graphics g){
-        
+
+    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
+        if (mx > x && mx < x + width) {
+            if (my > y && my < y + height) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
-    
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    public void tick() {
+
+    }
+
+    public void render(Graphics g) {
+        g.drawImage(overflow, 0, -10, null);
+        g.setColor(Color.black);
+        g.drawRect(830, 548, 100, 50);
+
+        Font fnt = new Font("Arial", 1, 30);
+
+        g.setFont(fnt);
+        g.drawString("Shop", 845, 580);
+        
+        Font fnt2 = new Font("Arial", 1, 20);
+
+        g.setFont(fnt2);
+        g.drawString(Integer.toString(bank.getBank()), 20, 20);
+    }
+
 }
