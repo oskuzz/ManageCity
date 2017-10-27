@@ -8,7 +8,6 @@ package backend;
 import pictures.Images;
 import frontend.*;
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -26,6 +25,9 @@ public class Main extends Canvas implements Runnable {
     private NewGame newGame;
     private Upgrade upgrade;
     private Bank bank;
+    private Shop shop;
+    private Marketing marketing;
+    private Game game;
 
     public enum SCREEN {
         MainMenu,
@@ -40,7 +42,7 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.MainMenu;
+    public static SCREEN screen = SCREEN.Game;
 
     public Main() {
         
@@ -52,6 +54,9 @@ public class Main extends Canvas implements Runnable {
         newGame = new NewGame(this);
         upgrade = new Upgrade(this);
         bank = new Bank(100, this);
+        marketing = new Marketing();
+        shop = new Shop();
+        game = new Game(this, upgrade, bank, shop, marketing);
 
         this.addMouseListener(mainmenu);
         this.addMouseListener(upgrade);
