@@ -6,20 +6,48 @@
 package frontend;
 
 import backend.Main;
+import backend.Main.SCREEN;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
  * @author s1601396
  */
-public class NewGame {
+public class NewGame extends MouseAdapter {
 
     private Main main;
 
     public NewGame(Main main) {
         this.main = main;
+    }
+
+    public void mousePressed(MouseEvent e) {
+        int mx = e.getX();
+        int my = e.getY();
+
+        if (mouseOver(mx, my, 380, 430, 200, 60)) {
+            main.screen = SCREEN.Game;
+        }
+    }
+
+    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
+        if (mx > x && mx < x + width) {
+            if (my > y && my < y + height) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
     }
 
     public void tick() {

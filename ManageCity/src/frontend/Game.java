@@ -74,11 +74,11 @@ public class Game extends MouseAdapter {
 
         g.setFont(fnt);
         g.drawString("Shop", 845, 580);
-        
+
         Font fnt2 = new Font("Arial", 1, 20);
 
         g.setFont(fnt2);
-        g.drawString(Integer.toString(bank.getBank()), 20, 20);
+        g.drawString("Bank: " + Integer.toString(bank.getBank()), 20, 30);
     }
 
 }

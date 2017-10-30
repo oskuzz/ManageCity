@@ -28,6 +28,8 @@ public class Main extends Canvas implements Runnable {
     private Shop shop;
     private Marketing marketing;
     private Game game;
+    private Options options;
+    
 
     public enum SCREEN {
         MainMenu,
@@ -42,25 +44,27 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.Game;
+    public static SCREEN screen = SCREEN.MainMenu;
 
     public Main() {
-        
+
         Images images = new Images();
-        
+
         images.loadImage();
-        
+
         mainmenu = new MainMenu(this, Images.getMainMenu(), Images.getMainMenuBackGround());
         newGame = new NewGame(this);
         upgrade = new Upgrade(this);
         bank = new Bank(100, this);
         marketing = new Marketing();
-        shop = new Shop();
+        shop = new Shop(this, bank);
         game = new Game(this, upgrade, bank, shop, marketing, Images.getGameOverFlow());
+        options = new Options();
 
         this.addMouseListener(mainmenu);
         this.addMouseListener(game);
         this.addMouseListener(upgrade);
+        this.addMouseListener(newGame);
         this.addKeyListener(new KeyInput());
 
         new Window(WIDTH, HEIGHT, "Game", this);
@@ -137,8 +141,10 @@ public class Main extends Canvas implements Runnable {
             upgrade.render(g);
         } else if (screen == SCREEN.Bank) {
             bank.render(g);
-        } else if(screen == SCREEN.Game){
+        } else if (screen == SCREEN.Game) {
             game.render(g);
+        } else if(screen == SCREEN.Options){
+            options.render(g);
         }
 
         g.dispose();

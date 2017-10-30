@@ -5,10 +5,30 @@
  */
 package frontend;
 
+import backend.Main;
+import java.awt.Graphics;
+
 /**
  *
  * @author s1601396
  */
 public class Shop {
+
+    private Main main;
+    private Bank bank;
+
+    public Shop(Main main, Bank bank) {
+        this.main = main;
+        this.bank = bank;
+    }
     
+    public void tick(){
+        
+    }
+    
+    public void render(Graphics g){
+        
+    }
+            
+
 }
