@@ -5,6 +5,8 @@
  */
 package frontend;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 /**
@@ -22,6 +24,9 @@ public class Options {
     }
 
     public void render(Graphics g) {
-
+        Font fnt = new Font("Arial", 1, 40);
+        g.setFont(fnt);
+        g.setColor(Color.white);
+        g.drawString("Options", 400, 400);
     }
 }

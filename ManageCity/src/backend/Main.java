@@ -29,7 +29,6 @@ public class Main extends Canvas implements Runnable {
     private Marketing marketing;
     private Game game;
     private Options options;
-    
 
     public enum SCREEN {
         MainMenu,
@@ -51,9 +50,8 @@ public class Main extends Canvas implements Runnable {
         Images images = new Images();
 
         images.loadImage();
-
-        mainmenu = new MainMenu(this, Images.getMainMenu(), Images.getMainMenuBackGround());
         newGame = new NewGame(this);
+        mainmenu = new MainMenu(this, Images.getMainMenu(), Images.getMainMenuBackGround(), newGame);
         upgrade = new Upgrade(this);
         bank = new Bank(100, this);
         marketing = new Marketing();
@@ -133,18 +131,27 @@ public class Main extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
 
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        if (screen == SCREEN.MainMenu) {
-            mainmenu.render(g);
-        } else if (screen == SCREEN.NewGame) {
-            newGame.render(g);
-        } else if (screen == SCREEN.Upgrade) {
-            upgrade.render(g);
-        } else if (screen == SCREEN.Bank) {
-            bank.render(g);
-        } else if (screen == SCREEN.Game) {
-            game.render(g);
-        } else if(screen == SCREEN.Options){
-            options.render(g);
+        if (null != screen) switch (screen) {
+            case MainMenu:
+                mainmenu.render(g);
+                break;
+            case NewGame:
+                newGame.render(g);
+                break;
+            case Upgrade:
+                upgrade.render(g);
+                break;
+            case Bank:
+                bank.render(g);
+                break;
+            case Game:
+                game.render(g);
+                break;
+            case Options:
+                options.render(g);
+                break;
+            default:
+                break;
         }
 
         g.dispose();

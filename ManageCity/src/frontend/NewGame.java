@@ -20,16 +20,21 @@ import java.awt.event.MouseEvent;
 public class NewGame extends MouseAdapter {
 
     private Main main;
+    private boolean open = false;
 
     public NewGame(Main main) {
         this.main = main;
+    }
+    
+    public void open(boolean open){
+        this.open = open;
     }
 
     public void mousePressed(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
-        if (mouseOver(mx, my, 380, 430, 200, 60)) {
+        if (open && mouseOver(mx, my, 380, 430, 200, 60)) {
             main.screen = SCREEN.Game;
         }
     }

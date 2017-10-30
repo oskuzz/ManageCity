@@ -21,15 +21,17 @@ import java.awt.image.BufferedImage;
 public class MainMenu extends MouseAdapter {
 
     private Main main;
+    private NewGame newGame;
     private static BufferedImage MAINMENUIMAGE;
     private static BufferedImage MAINMENUBACKGROUND;
 
     ;
 
-    public MainMenu(Main main, BufferedImage MAINMENUIMAGE, BufferedImage MAINMENUBACKGROUND) {
+    public MainMenu(Main main, BufferedImage MAINMENUIMAGE, BufferedImage MAINMENUBACKGROUND, NewGame newGame) {
         this.main = main;
         this.MAINMENUIMAGE = MAINMENUIMAGE;
         this.MAINMENUBACKGROUND = MAINMENUBACKGROUND;
+        this.newGame = newGame;
     }
 
     public void mousePressed(MouseEvent e) {
@@ -39,6 +41,7 @@ public class MainMenu extends MouseAdapter {
         if (main.screen == SCREEN.MainMenu) {
             if (mouseOver(mx, my, 380, 230, 200, 60)) {
                 main.screen = SCREEN.NewGame;
+                newGame.open(true);
             }
 
             if (mouseOver(mx, my, 380, 330, 200, 60)) {
