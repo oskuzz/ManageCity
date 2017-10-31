@@ -43,7 +43,7 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.MainMenu;
+    public static SCREEN screen = SCREEN.Shop;
 
     public Main() {
 
@@ -55,7 +55,7 @@ public class Main extends Canvas implements Runnable {
         upgrade = new Upgrade(this);
         bank = new Bank(100, this);
         marketing = new Marketing();
-        shop = new Shop(this, bank);
+        shop = new Shop(this, bank, Images.getShopBackGround());
         game = new Game(this, upgrade, bank, shop, marketing, Images.getGameOverFlow());
         options = new Options();
 
@@ -63,6 +63,7 @@ public class Main extends Canvas implements Runnable {
         this.addMouseListener(game);
         this.addMouseListener(upgrade);
         this.addMouseListener(newGame);
+        this.addMouseListener(shop);
         this.addKeyListener(new KeyInput());
 
         new Window(WIDTH, HEIGHT, "Game", this);
@@ -150,6 +151,8 @@ public class Main extends Canvas implements Runnable {
             case Options:
                 options.render(g);
                 break;
+            case Shop:
+                shop.render(g);
             default:
                 break;
         }
