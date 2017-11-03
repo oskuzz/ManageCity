@@ -36,8 +36,7 @@ public class Bank {
     }
     
     public void render(Graphics g){
-        g.setColor(Color.yellow);
-        g.drawRect(40, 40, 40, 40);
+        
     }
     
 }

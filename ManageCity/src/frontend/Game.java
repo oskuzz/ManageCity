@@ -40,9 +40,15 @@ public class Game extends MouseAdapter {
         int mx = e.getX();
         int my = e.getY();
 
+        if (mouseOver(mx, my, 720, 548, 100, 50)) {
+            main.screen = SCREEN.Bank;
+
+        }
+
         if (mouseOver(mx, my, 830, 548, 100, 50)) {
             main.screen = SCREEN.Shop;
         }
+
     }
 
     public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
@@ -77,8 +83,11 @@ public class Game extends MouseAdapter {
 
         Font fnt2 = new Font("Arial", 1, 20);
 
+        g.drawRect(720, 548, 100, 50);
+        g.drawString("Bank", 735, 580);
         g.setFont(fnt2);
         g.drawString("Bank: " + Integer.toString(bank.getBank()), 20, 30);
+
     }
 
 }

@@ -43,7 +43,7 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.MainMenu;
+    public static SCREEN screen = SCREEN.Game;
 
     public Main() {
 
