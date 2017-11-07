@@ -38,52 +38,52 @@ public class Upgrade extends MouseAdapter {
         int my = e.getY();
         if (main.screen == SCREEN.Upgrade) {
             //upgrade1
-            if (mouseOver(mx, my, 668, 200, 25, 21)) {
+            if (main.mouseOver(mx, my, 668, 200, 25, 21)) {
                 if (upgrade1 != 0) {
                     upgrade1--;
                 }
-            } else if (mouseOver(mx, my, 810, 200, 25, 21)) {
+            } else if (main.mouseOver(mx, my, 810, 200, 25, 21)) {
                 if (upgrade1 != 5) {
                     upgrade1++;
                 }
             }
             //upgrade2
-            if (mouseOver(mx, my, 668, 250, 25, 21)) {
+            if (main.mouseOver(mx, my, 668, 250, 25, 21)) {
                 if (upgrade2 != 0) {
                     upgrade2--;
                 }
 
-            } else if (mouseOver(mx, my, 810, 250, 25, 21)) {
+            } else if (main.mouseOver(mx, my, 810, 250, 25, 21)) {
                 if (upgrade2 != 5) {
                     upgrade2++;
                 }
             }
             //upgrade3
-            if (mouseOver(mx, my, 668, 300, 25, 21)) {
+            if (main.mouseOver(mx, my, 668, 300, 25, 21)) {
                 if (upgrade3 != 0) {
                     upgrade3--;
                 }
-            } else if (mouseOver(mx, my, 810, 300, 25, 21)) {
+            } else if (main.mouseOver(mx, my, 810, 300, 25, 21)) {
                 if (upgrade3 != 5) {
                     upgrade3++;
                 }
             }
             //upgrade4
-            if (mouseOver(mx, my, 668, 350, 25, 21)) {
+            if (main.mouseOver(mx, my, 668, 350, 25, 21)) {
                 if (upgrade4 != 0) {
                     upgrade4--;
                 }
-            } else if (mouseOver(mx, my, 810, 350, 25, 21)) {
+            } else if (main.mouseOver(mx, my, 810, 350, 25, 21)) {
                 if (upgrade4 != 5) {
                     upgrade4++;
                 }
             }
             //upgrade5
-            if (mouseOver(mx, my, 668, 400, 25, 21)) {
+            if (main.mouseOver(mx, my, 668, 400, 25, 21)) {
                 if (upgrade5 != 0) {
                     upgrade5--;
                 }
-            } else if (mouseOver(mx, my, 810, 400, 25, 21)) {
+            } else if (main.mouseOver(mx, my, 810, 400, 25, 21)) {
                 if (upgrade5 != 5) {
                     upgrade5++;
                 }
@@ -93,18 +93,6 @@ public class Upgrade extends MouseAdapter {
 
     public void mouseReleased(MouseEvent e) {
 
-    }
-
-    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
-        if (mx > x && mx < x + width) {
-            if (my > y && my < y + height) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
     }
 
     public void tick() {

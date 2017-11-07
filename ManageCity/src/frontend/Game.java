@@ -40,27 +40,15 @@ public class Game extends MouseAdapter {
         int mx = e.getX();
         int my = e.getY();
 
-        if (mouseOver(mx, my, 720, 548, 100, 50)) {
+        if (main.mouseOver(mx, my, 720, 548, 100, 50)) {
             main.screen = SCREEN.Bank;
 
         }
 
-        if (mouseOver(mx, my, 830, 548, 100, 50)) {
+        if (main.mouseOver(mx, my, 830, 548, 100, 50)) {
             main.screen = SCREEN.Shop;
         }
 
-    }
-
-    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
-        if (mx > x && mx < x + width) {
-            if (my > y && my < y + height) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
     }
 
     public void mouseReleased(MouseEvent e) {

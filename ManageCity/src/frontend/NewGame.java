@@ -25,8 +25,8 @@ public class NewGame extends MouseAdapter {
     public NewGame(Main main) {
         this.main = main;
     }
-    
-    public void open(boolean open){
+
+    public void open(boolean open) {
         this.open = open;
     }
 
@@ -34,20 +34,8 @@ public class NewGame extends MouseAdapter {
         int mx = e.getX();
         int my = e.getY();
 
-        if (open && mouseOver(mx, my, 380, 430, 200, 60)) {
+        if (open && main.mouseOver(mx, my, 380, 430, 200, 60)) {
             main.screen = SCREEN.Game;
-        }
-    }
-
-    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
-        if (mx > x && mx < x + width) {
-            if (my > y && my < y + height) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
         }
     }
 

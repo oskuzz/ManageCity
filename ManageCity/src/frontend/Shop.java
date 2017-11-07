@@ -37,11 +37,11 @@ public class Shop extends MouseAdapter {
         int mx = e.getX();
         int my = e.getY();
 
-        if (mouseOver(mx, my, 15, 15, 100, 50)) {
+        if (main.mouseOver(mx, my, 15, 15, 100, 50)) {
             main.screen = SCREEN.Game;
         }
         
-        if(!shop1 && mouseOver(mx,my,200, 100, 120, 50)) {
+        if(!shop1 && main.mouseOver(mx,my,200, 100, 120, 50)) {
         	bank.toBank(-100);
         	shop1 = true;
         	c = Color.gray;
@@ -49,17 +49,7 @@ public class Shop extends MouseAdapter {
 
     }
 
-    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
-        if (mx > x && mx < x + width) {
-            if (my > y && my < y + height) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
+    
 
     public void mouseReleased(MouseEvent e) {
 
@@ -73,8 +63,7 @@ public class Shop extends MouseAdapter {
         Font fnt = new Font("Arial", 1, 30);
         Font fnt2 = new Font("Arial", 1, 20);
         g.drawImage(shopbackground, 0, 0, null);
-        //g.setColor(Color.white);
-        //g.fillRect(15, 15, 100, 50);
+        
         g.setFont(fnt);
         g.setColor(Color.black);
         g.drawString("Bank: " + Integer.toString(bank.getBank()), 200, 30);
@@ -87,7 +76,7 @@ public class Shop extends MouseAdapter {
         g.fillRect(200, 100, 120, 50);
         g.setColor(Color.black);
         g.drawRect(200, 100, 120, 50);
-        g.drawString("Boost: 100€", 202, 133);
+        g.drawString("Boost: 100ï¿½", 202, 133);
     }
 
 }

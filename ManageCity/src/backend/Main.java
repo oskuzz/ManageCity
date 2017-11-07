@@ -43,7 +43,7 @@ public class Main extends Canvas implements Runnable {
         Continue
     };
 
-    public static SCREEN screen = SCREEN.Game;
+    public static SCREEN screen = SCREEN.MainMenu;
 
     public Main() {
 
@@ -100,6 +100,18 @@ public class Main extends Canvas implements Runnable {
         stop();
     }
 
+    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
+        if (mx > x && mx < x + width) {
+            if (my > y && my < y + height) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public synchronized void start() {
         thread = new Thread(this);
         thread.start();
@@ -132,29 +144,31 @@ public class Main extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
 
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        if (null != screen) switch (screen) {
-            case MainMenu:
-                mainmenu.render(g);
-                break;
-            case NewGame:
-                newGame.render(g);
-                break;
-            case Upgrade:
-                upgrade.render(g);
-                break;
-            case Bank:
-                bank.render(g);
-                break;
-            case Game:
-                game.render(g);
-                break;
-            case Options:
-                options.render(g);
-                break;
-            case Shop:
-                shop.render(g);
-            default:
-                break;
+        if (null != screen) {
+            switch (screen) {
+                case MainMenu:
+                    mainmenu.render(g);
+                    break;
+                case NewGame:
+                    newGame.render(g);
+                    break;
+                case Upgrade:
+                    upgrade.render(g);
+                    break;
+                case Bank:
+                    bank.render(g);
+                    break;
+                case Game:
+                    game.render(g);
+                    break;
+                case Options:
+                    options.render(g);
+                    break;
+                case Shop:
+                    shop.render(g);
+                default:
+                    break;
+            }
         }
 
         g.dispose();

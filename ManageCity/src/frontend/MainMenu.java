@@ -39,20 +39,20 @@ public class MainMenu extends MouseAdapter {
         int my = e.getY();
 
         if (main.screen == SCREEN.MainMenu) {
-            if (mouseOver(mx, my, 380, 230, 200, 60)) {
+            if (main.mouseOver(mx, my, 380, 230, 200, 60)) {
                 main.screen = SCREEN.NewGame;
                 newGame.open(true);
             }
 
-            if (mouseOver(mx, my, 380, 330, 200, 60)) {
+            if (main.mouseOver(mx, my, 380, 330, 200, 60)) {
                 main.screen = SCREEN.Continue;
             }
 
-            if (mouseOver(mx, my, 380, 430, 200, 60)) {
+            if (main.mouseOver(mx, my, 380, 430, 200, 60)) {
                 main.screen = SCREEN.Options;
             }
 
-            if (mouseOver(mx, my, 380, 530, 200, 60)) {
+            if (main.mouseOver(mx, my, 380, 530, 200, 60)) {
                 System.exit(0);
             }
         }
@@ -60,18 +60,6 @@ public class MainMenu extends MouseAdapter {
 
     public void mouseReleased(MouseEvent e) {
 
-    }
-
-    public boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
-        if (mx > x && mx < x + width) {
-            if (my > y && my < y + height) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
     }
 
     public void tick() {
